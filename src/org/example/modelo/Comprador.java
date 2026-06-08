@@ -5,14 +5,7 @@ package org.example.modelo;
  * Compra, recibe el vuelto y consume el producto.
  */
 public class Comprador {
-    /**
-     * Sabor del producto consumido.
-     */
     private String sabor;
-
-    /**
-     * Cantidad total de vuelto recibido.
-     */
     private int totalVuelto;
 
     /**
@@ -21,7 +14,7 @@ public class Comprador {
      * @param cual Que producto del catálogo se quiere comprar.
      * @param expendedor Referencia al expendedor donde se realiza la compra.
      * @throws PagoIncorrectoException Si la moneda es null.
-     * @throws NoHayProductoException  Si no se encuentra dispoible el producto.
+     * @throws NoHayProductoException  Si no se encuentra disponible el producto.
      * @throws PagoInsuficienteException Si el valor de la moneda no es suficiente para completar el pago.
      */
     public Comprador(Moneda moneda, Catalogo cual, Expendedor expendedor)
@@ -31,7 +24,8 @@ public class Comprador {
         this.totalVuelto = 0;
 
         // Intenta comprar el producto del expendedor.
-        Producto producto = expendedor.comprarProducto(moneda, cual);
+        expendedor.comprarProducto(moneda, cual);
+        Producto producto = expendedor.getProducto();
         // Se consume el producto y se guarda su sabor en una cadena de texto.
         this.sabor = producto.consumir();
 
