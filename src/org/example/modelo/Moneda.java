@@ -8,16 +8,14 @@ package org.example.modelo;
  */
 public abstract class Moneda implements Comparable<Moneda> {
 
-    /** Contador estático para generar números de serie únicos entre todas las monedas. */
+    //Contador estático para generar números de serie únicos entre todas las monedas.
     private static int contadorSerie = 1;
 
-    /** Número de serie único de esta moneda. */
+    // Número de serie único de esta moneda.
     private int serie;
 
-    /** Coordenada X de la moneda dentro de su depósito en la ventana gráfica. */
+    // Coordenada X e Y de la moneda dentro de su depósito en la ventana gráfica.
     private int x;
-
-    /** Coordenada Y de la moneda dentro de su depósito en la ventana gráfica. */
     private int y;
 
     /**

@@ -6,15 +6,10 @@ package org.example.modelo;
  */
 
 public enum Catalogo {
-    /** Bebida CocaCola, precio $1000 **/
     COCACOLA(1, 1000),
-    /** Bebida Sprite, precio $1000 **/
     SPRITE(2, 1000),
-    /** Bebida Fanta, precio $1000 **/
     FANTA(3, 1000),
-    /** Dulce Snickers, precio $800 **/
     SNICKERS(4, 800),
-    /** Dulce Super8, precio $500 **/
     SUPER8(5, 500);
 
     private final int id;

@@ -9,10 +9,8 @@ import java.util.ArrayList;
 public class Deposito<T> {
     private ArrayList<T> almacen;
 
-    /** Coordenada X del depósito dentro de la ventana gráfica. */
+    //Coordenada X e Y del depósito dentro de la ventana gráfica.
     private int x;
-
-    /** Coordenada Y del depósito dentro de la ventana gráfica. */
     private int y;
 
     /**
@@ -71,9 +69,7 @@ public class Deposito<T> {
      * @param index posición del elemento.
      * @return el elemento en esa posición.
      */
-    public T getAt(int index) {
-        return almacen.get(index);
-    }
+    public T getAt(int index) {return almacen.get(index);}
 
     /**
      * Establece la posición gráfica del depósito dentro de la ventana.
@@ -89,9 +85,7 @@ public class Deposito<T> {
      * Retorna la coordenada X del depósito.
      * @return posición horizontal en píxeles.
      */
-    public int getX() {
-        return x;
-    }
+    public int getX() {return x;}
 
     /**
      * Retorna la coordenada Y del depósito.

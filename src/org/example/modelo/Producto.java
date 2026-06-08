@@ -7,13 +7,11 @@ package org.example.modelo;
  */
 public abstract class Producto {
 
-    /** Número de serie para identificar al producto. */
+    //Número de serie para identificar al producto.
     private int serie;
 
-    /** Coordenada X del producto dentro de su depósito en la ventana gráfica. */
+    //Coordenadas X e Y del producto dentro de su depósito en la ventana gráfica.
     private int x;
-
-    /** Coordenada Y del producto dentro de su depósito en la ventana gráfica. */
     private int y;
 
     /**
