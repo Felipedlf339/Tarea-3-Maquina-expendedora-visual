@@ -44,12 +44,6 @@ public class PanelDeposito<T> {
     }
 
     public void paintComponent(Graphics g) {
-        g.setColor(new Color(176, 216, 230, 80));
-        g.fillRoundRect(x, y, ancho, alto, 12, 12);
-
-        g.setColor(Color.CYAN);
-        g.drawRoundRect(x, y, ancho, alto, 12, 12);
-
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 11));
         g.drawString(etiqueta, x + 8, y - 6);
