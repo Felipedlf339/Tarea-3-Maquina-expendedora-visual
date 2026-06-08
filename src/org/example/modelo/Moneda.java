@@ -1,4 +1,5 @@
 package org.example.modelo;
+import java.awt.Graphics;
 
 /**
  * Clase abstracta que representa una moneda en el sistema.
@@ -62,6 +63,12 @@ public abstract class Moneda implements Comparable<Moneda> {
      * @return posición vertical en píxeles.
      */
     public int getY() {return y;}
+
+    /**
+     *
+     * @param g
+     */
+    public abstract void paintComponent(Graphics g);
 
     /**
      * Compara esta moneda con otra según su valor, para permitir ordenamiento.

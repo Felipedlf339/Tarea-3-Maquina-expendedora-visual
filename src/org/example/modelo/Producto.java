@@ -1,4 +1,5 @@
 package org.example.modelo;
+import java.awt.Graphics;
 
 /**
  * Clase abstracta que representa un producto genérico en el sistema.
@@ -57,5 +58,7 @@ public abstract class Producto {
      * @return posición vertical en píxeles.
      */
     public int getY() {return y;}
+
+    public abstract void paintComponent(Graphics g);
 
 }
