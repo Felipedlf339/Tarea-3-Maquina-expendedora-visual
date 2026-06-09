@@ -14,6 +14,11 @@ public class Super8 extends Dulce {
 
     private Image imagen;
 
+    /**
+     * Constructor que inicializa un Super8 con su número de serie.
+     * Intenta cargar su imagen.
+     * @param serie número de serie del Super8.
+     */
     public Super8(int serie) {
         super(serie);
         try {
@@ -32,6 +37,11 @@ public class Super8 extends Dulce {
         return "super8";
     }
 
+    /**
+     * Dibuja el producto en la interfaz.
+     * Muestra la imagen cargada o un rectángulo rosa si esta no carga.
+     * * @param g "pincel" que permite dibujar figuras, textos e imagenes en pantalla.
+     */
     @Override
     public void paintComponent(Graphics g) {
         int ancho = 50;

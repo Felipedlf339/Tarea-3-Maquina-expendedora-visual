@@ -14,6 +14,11 @@ public class Snickers extends Dulce {
 
     private Image imagen;
 
+    /**
+     * Constructor que inicializa un Snickers con su número de serie.
+     * Intenta cargar su imagen.
+     * @param serie número de serie del Snickers.
+     */
     public Snickers(int serie) {
         super(serie);
         try {
@@ -31,6 +36,11 @@ public class Snickers extends Dulce {
         return "snickers";
     }
 
+    /**
+     * Dibuja el producto en la interfaz.
+     * Muestra la imagen cargada o un rectángulo rosa si esta no carga.
+     * * @param g "pincel" que permite dibujar figuras, textos e imagenes en pantalla.
+     */
     @Override
     public void paintComponent(Graphics g) {
         int ancho = 50;

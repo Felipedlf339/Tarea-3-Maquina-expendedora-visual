@@ -26,6 +26,10 @@ public class Moneda500 extends Moneda {
         return 500;
     }
 
+    /**
+     * Dibuja la moneda de 100 como un círculo de color cobre y su valor.
+     * * @param g "pincel" que permite dibujar figuras, textos e imagenes en pantalla.
+     */
     @Override
     public void paintComponent(Graphics g) {
         int diametro = 40;
