@@ -14,6 +14,11 @@ public class Fanta extends Bebida {
 
     private Image imagen;
 
+    /**
+     * Constructor que inicializa una Fanta con su número de serie.
+     * Intenta cargar su imagen.
+     * @param serie número de serie de la Fanta.
+     */
     public Fanta(int serie) {
         super(serie);
         try {
@@ -32,6 +37,11 @@ public class Fanta extends Bebida {
         return "fanta";
     }
 
+    /**
+     * Dibuja el producto en la interfaz.
+     * Muestra la imagen cargada o un rectángulo rosa si esta no carga.
+     * * @param g "pincel" que permite dibujar figuras, textos e imagenes en pantalla.
+     */
     @Override
     public void paintComponent(Graphics g) {
         int ancho = 50;

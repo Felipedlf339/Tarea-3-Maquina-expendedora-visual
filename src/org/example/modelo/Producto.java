@@ -59,6 +59,10 @@ public abstract class Producto {
      */
     public int getY() {return y;}
 
+    /**
+     * Para dibujar el producto, cada producto implementa su propia visualización.
+     * * @param g "pincel" que permite dibujar figuras, textos e imagenes en pantalla.
+     */
     public abstract void paintComponent(Graphics g);
 
 }

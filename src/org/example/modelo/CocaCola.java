@@ -14,6 +14,11 @@ public class CocaCola extends Bebida {
 
     private Image imagen;
 
+    /**
+     * Constructor que inicializa una Coca-Cola con su número de serie.
+     * Intenta cargar su imagen.
+     * @param serie número de serie de la Coca-Cola.
+     */
     public CocaCola(int serie) {
         super(serie);
         try {
@@ -31,6 +36,11 @@ public class CocaCola extends Bebida {
         return "cocacola";
     }
 
+    /**
+     * Dibuja el producto en la interfaz.
+     * Muestra la imagen cargada o un rectángulo rosa si esta no carga.
+     * * @param g "pincel" que permite dibujar figuras, textos e imagenes en pantalla.
+     */
     @Override
     public void paintComponent(Graphics g) {
         int ancho = 50;

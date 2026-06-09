@@ -65,8 +65,8 @@ public abstract class Moneda implements Comparable<Moneda> {
     public int getY() {return y;}
 
     /**
-     *
-     * @param g
+     * Para dibujar una moneda, cada moneda implementa su propio color, valor, etc.
+     * * @param g "pincel" que permite dibujar figuras, textos e imagenes en pantalla.
      */
     public abstract void paintComponent(Graphics g);
 
