@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import org.example.modelo.Expendedor;
 
 /**
  * Clase que representa el panel principal de la aplicación.
@@ -26,8 +27,9 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         this.setBackground(Color.WHITE);
         this.setPreferredSize(new Dimension(1200, 800));
 
-        this.exp = new PanelExpendedor();
-        this.com = new PanelComprador();
+        Expendedor modeloExpendedor = new Expendedor(5);
+        this.exp = new PanelExpendedor(modeloExpendedor);
+        this.com = new PanelComprador(modeloExpendedor);
 
         this.addMouseListener(this);
     }
@@ -55,10 +57,10 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         int x = e.getX();
         int y = e.getY();
 
-        // com.verificarClic(x, y);
-        // exp.verificarClic(x, y);
+        com.verificarClic(x, y);
+        exp.verificarClic(x, y);
 
-        this.repaint(); // Redibuja toda la pantalla tras cada acción
+        this.repaint();
     }
 
     @Override public void mousePressed(MouseEvent e) {}

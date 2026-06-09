@@ -102,4 +102,29 @@ public class PanelExpendedor extends JPanel {
     public PanelDeposito<Moneda> getPanelVuelto() {
         return panelVuelto;
     }
+
+    /**
+     * Revisa si el clic del mouse está dentro del área visual del expendedor.
+     * Si el clic es válido, ordena a la máquina rellenar sus depósitos y
+     * actualiza las posiciones gráficas de los nuevos productos.
+     * @param x La coordenada X del clic.
+     * @param y La coordenada Y del clic.
+     */
+    public void verificarClic(int x, int y) {
+
+        if (x >= 0 && x <= 600) {
+            if (y >= 0 && y <= 800) {
+                System.out.println("Clic detectado en el vidrio del Expendedor. Rellenando...");
+                try {
+                    exp.rellenarDepositosVacios(5);
+
+                    this.actualizarPosiciones();
+
+                } catch (Exception e) {
+                    System.out.println("Error al intentar rellenar: " + e.getMessage());
+                }
+            }
+        }
+    }
+
 }
