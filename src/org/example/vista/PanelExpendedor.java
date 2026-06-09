@@ -92,8 +92,8 @@ public class PanelExpendedor extends JPanel {
         g.drawString("RETIRAR PRODUCTO", 140, 550);
 
 
-        if (exp.getDepProductoComprado().size() > 0) {
-            Producto comprado = exp.getDepProductoComprado().getAt(0);
+        if (exp.getProductoComprado() != null) {
+            Producto comprado = exp.getProductoComprado();
             comprado.setXY(205, 510);
             comprado.paintComponent(g);
         }

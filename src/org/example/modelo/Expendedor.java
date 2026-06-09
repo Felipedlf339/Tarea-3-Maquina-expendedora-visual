@@ -17,7 +17,7 @@ public class Expendedor {
     private Deposito<Moneda> monVuelto;
 
     //Deposito especial de capacidad 1
-    private Deposito<Producto> depProductoComprado;
+    private Producto productoComprado;
 
     //Monedas recibidas en compras exitosas
     private Deposito<Moneda> depMonedasRecibidas;
@@ -37,7 +37,7 @@ public class Expendedor {
         this.depSuper8 = new Deposito<>();
 
         this.monVuelto = new Deposito<>();
-        this.depProductoComprado = new Deposito<>();
+        this.productoComprado = null;
         this.depMonedasRecibidas = new Deposito<>();
 
 
@@ -93,7 +93,7 @@ public class Expendedor {
         }
 
         depMonedasRecibidas.add(m);
-        depProductoComprado.add(p);
+        productoComprado = p;
 
 
         //Vuelto en monedas de mayor denominación posible
@@ -104,7 +104,11 @@ public class Expendedor {
     }
 
     //Retorna el producto realizado en la compra
-    public Producto getProducto() {return depProductoComprado.get();}
+    public Producto getProducto() {
+        Producto p = this.productoComprado;
+        this.productoComprado = null;
+        return p;
+    }
 
     //Retorna una moneda de vuelto, o null si no queda.
     public Moneda getVuelto()  {return monVuelto.get();}
@@ -136,8 +140,11 @@ public class Expendedor {
     public Deposito<Producto> getDepSnickers() {return depSnickers;}
     public Deposito<Producto> getDepSuper8() {return depSuper8;}
     public Deposito<Moneda> getMonVuelto() {return monVuelto;}
-    public Deposito<Producto> getDepProductoComprado() {return depProductoComprado;}
     public Deposito<Moneda> getDepMonedasRecibidas() {return depMonedasRecibidas;}
+
+    public Producto getProductoComprado() {
+        return productoComprado;
+    }
 
     public void setXY(int x, int y) {this.x = x; this.y = y;}
     public int getX() {return x;}
