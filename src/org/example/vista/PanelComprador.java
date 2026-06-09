@@ -1,5 +1,4 @@
 package org.example.vista;
-
 import org.example.modelo.*;
 import javax.swing.JPanel;
 import java.awt.Graphics;
@@ -14,6 +13,8 @@ public class PanelComprador extends JPanel {
 
     private Expendedor expendedor;
     private Moneda monedaSeleccionada = null;
+
+    public static String mensajeEstado = "Esperando instrucción...";
 
     private final int botonX = 650;
     private final int botonAncho = 120;
@@ -40,30 +41,30 @@ public class PanelComprador extends JPanel {
         g.setColor(Color.BLACK);
         g.drawString("1. SELECCIONE LA MONEDA A USAR:", botonX, 50);
 
-        g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(botonX, 70, 60, 60); // Cuadro $100
+        g.setColor(new Color(205, 127, 50));
+        g.fillOval(botonX, 70, 60, 60);
         g.setColor(Color.BLACK);
-        g.drawRect(botonX, 70, 60, 60); // Borde $100
+        g.drawOval(botonX, 70, 60, 60);
         g.drawString("$100", botonX + 15, 105);
 
-        g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(botonX + 80, 70, 60, 60); // Cuadro $500
+        g.setColor(new Color(212, 175, 55));
+        g.fillOval(botonX + 80, 70, 60, 60);
         g.setColor(Color.BLACK);
-        g.drawRect(botonX + 80, 70, 60, 60); // Borde $500
+        g.drawOval(botonX + 80, 70, 60, 60);
         g.drawString("$500", botonX + 95, 105);
 
-        g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(botonX + 160, 70, 60, 60); // Cuadro $1000
+        g.setColor(new Color(143, 188, 143));
+        g.fillOval(botonX + 160, 70, 60, 60);
         g.setColor(Color.BLACK);
-        g.drawRect(botonX + 160, 70, 60, 60); // Borde $1000
-        g.drawString("$1000", botonX + 170, 105);
+        g.drawOval(botonX + 160, 70, 60, 60);
+        g.drawString("$1000", botonX + 165, 105);
 
 
         g.setColor(Color.BLUE);
         if (monedaSeleccionada != null) {
-            g.drawString("Moneda en mano: $" + monedaSeleccionada.getValor(), botonX, 150);
+            g.drawString("Moneda seleccionada: $" + monedaSeleccionada.getValor(), botonX, 150);
         } else {
-            g.drawString("Moneda en mano: Ninguna", botonX, 150);
+            g.drawString("Moneda seleccionada: Ninguna", botonX, 150);
         }
 
         // SECCIÓN DE PRODUCTOS
@@ -85,21 +86,14 @@ public class PanelComprador extends JPanel {
         g.setColor(Color.YELLOW); g.fillRect(botonX, 390, botonAncho, botonAlto);
         g.setColor(Color.BLACK); g.drawString("Super 8", botonX + 35, 415);
 
-        // SECCIÓN DE RETIRO
+        // SECCIÓN DE MENSAJES
         g.setColor(Color.BLACK);
-        g.drawString("3. ZONA DE RETIRO :", botonX, 460);
+        g.drawString("3. ESTADO DE LA COMPRA:", botonX, 470);
 
-        g.setColor(Color.WHITE);
-        g.fillRect(botonX, 480, 100, 60); // Bandeja Producto
-        g.setColor(Color.BLACK);
-        g.drawRect(botonX, 480, 100, 60);
-        g.drawString("[ Producto ]", botonX + 15, 515);
-
-        g.setColor(Color.WHITE);
-        g.fillRect(botonX + 120, 480, 100, 60); // Bandeja Vuelto
-        g.setColor(Color.BLACK);
-        g.drawRect(botonX + 120, 480, 100, 60);
-        g.drawString("[ Vuelto ]", botonX + 140, 515);
+        g.setColor(Color.DARK_GRAY);
+        g.fillRect(botonX, 480, 320, 40);
+        g.setColor(Color.GREEN);
+        g.drawString(mensajeEstado, botonX + 10, 505);
     }
 
     /**
@@ -115,15 +109,18 @@ public class PanelComprador extends JPanel {
         if (y >= 70 && y <= 130) {
             if (x >= botonX && x <= botonX + 60) {
                 monedaSeleccionada = new Moneda100();
+                mensajeEstado = "Moneda de $100 tomada.";
             } else if (x >= botonX + 80 && x <= botonX + 140) {
                 monedaSeleccionada = new Moneda500();
+                mensajeEstado = "Moneda de $500 tomada.";
             } else if (x >= botonX + 160 && x <= botonX + 220) {
                 monedaSeleccionada = new Moneda1000();
+                mensajeEstado = "Moneda de $1000 tomada.";
             }
         }
 
         // CLIC EN PRODUCTOS
-        if (x >= botonX && x <= (botonX + botonAncho)) {
+        if (x >= botonX && x <= (botonX + botonAncho) && y >= 190 && y <= 430) {
             if (monedaSeleccionada != null) {
                 try {
                     if (y >= 190 && y <= 230) {
@@ -137,24 +134,16 @@ public class PanelComprador extends JPanel {
                     } else if (y >= 390 && y <= 430) {
                         expendedor.comprarProducto(monedaSeleccionada, Catalogo.SUPER8);
                     }
-                    monedaSeleccionada = null; // Soltamos la moneda porque la máquina se la tragó
-                    System.out.println("Compra enviada");
+                    monedaSeleccionada = null;
+                    System.out.println("Compra efectuada");
+                    mensajeEstado = "Compra efectuada Retire su producto.";
                 } catch (Exception e) {
-                    System.out.println("Error: " + e.getMessage());
+                    System.out.println(e.getMessage());
+                    mensajeEstado = e.getMessage();
                 }
             } else if (y >= 190 && y <= 430) {
                 System.out.println("Selecciona una moneda primero");
-            }
-        }
-
-        // --- 3. CLIC EN BANDEJAS DE RETIRO ---
-        if (y >= 480 && y <= 540) {
-            if (x >= botonX && x <= botonX + 100) {
-                Producto p = expendedor.getProducto();
-                if (p != null) System.out.println("Retiraste: " + p.getClass().getSimpleName() + "!");
-            } else if (x >= botonX + 120 && x <= botonX + 220) {
-                Moneda m = expendedor.getVuelto();
-                if (m != null) System.out.println("Retiraste vuelto: $" + m.getValor() + "!");
+                mensajeEstado = "Debes seleccionar una moneda";
             }
         }
     }

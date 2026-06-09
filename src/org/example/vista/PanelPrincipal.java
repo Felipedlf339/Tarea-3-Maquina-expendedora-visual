@@ -59,6 +59,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
 
         com.verificarClic(x, y);
         exp.verificarClic(x, y);
+        exp.actualizarPosiciones();
 
         this.repaint();
     }

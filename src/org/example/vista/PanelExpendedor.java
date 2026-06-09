@@ -105,24 +105,41 @@ public class PanelExpendedor extends JPanel {
 
     /**
      * Revisa si el clic del mouse está dentro del área visual del expendedor.
-     * Si el clic es válido, ordena a la máquina rellenar sus depósitos y
-     * actualiza las posiciones gráficas de los nuevos productos.
-     * @param x La coordenada X del clic.
-     * @param y La coordenada Y del clic.
+     * Permite retirar productos, retirar vuelto, o rellenar la máquina al tocar el vidrio.
      */
     public void verificarClic(int x, int y) {
 
-        if (x >= 0 && x <= 600) {
-            if (y >= 0 && y <= 800) {
-                System.out.println("Clic detectado en el vidrio del Expendedor. Rellenando...");
-                try {
-                    exp.rellenarDepositosVacios(5);
+        // 1. ZONA DE RETIRAR PRODUCTO
+        if (x >= 70 && x <= 395 && y >= 490 && y <= 600) {
+            Producto p = exp.getProducto();
+            if (p != null) {
+                System.out.println("Retiraste de la máquina: " + p.getClass().getSimpleName());
 
-                    this.actualizarPosiciones();
+                PanelComprador.mensajeEstado = "Retiraste: " + p.getClass().getSimpleName();
+            }
+        }
 
-                } catch (Exception e) {
-                    System.out.println("Error al intentar rellenar: " + e.getMessage());
-                }
+        // 2. ZONA DE RETIRAR VUELTO
+        else if (x >= 430 && x <= 530 && y >= 490 && y <= 600) {
+            Moneda m = exp.getVuelto();
+            if (m != null) {
+                System.out.println("Retiraste vuelto de la máquina: $" + m.getValor());
+
+                PanelComprador.mensajeEstado = "Retiraste vuelto: $" + m.getValor();
+            }
+        }
+
+        // 3. ZONA DEL VIDRIO
+        else if (x >= 0 && x <= 600 && y >= 0 && y < 490) {
+            System.out.println("Clic detectado en el vidrio del Expendedor. Rellenando...");
+            try {
+                exp.rellenarDepositosVacios(5);
+                this.actualizarPosiciones();
+                // ESTA LÍNEA ES LA QUE ACTUALIZA TU PANTALLA VISUAL:
+                PanelComprador.mensajeEstado = "Máquina rellenada con éxito.";
+            } catch (Exception e) {
+                System.out.println("Error al rellenar: " + e.getMessage());
+                PanelComprador.mensajeEstado = e.getMessage();
             }
         }
     }
