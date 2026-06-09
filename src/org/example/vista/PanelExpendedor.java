@@ -135,7 +135,7 @@ public class PanelExpendedor extends JPanel {
             try {
                 exp.rellenarDepositosVacios(5);
                 this.actualizarPosiciones();
-                // ESTA LÍNEA ES LA QUE ACTUALIZA TU PANTALLA VISUAL:
+
                 PanelComprador.mensajeEstado = "Máquina rellenada con éxito.";
             } catch (Exception e) {
                 System.out.println("Error al rellenar: " + e.getMessage());
