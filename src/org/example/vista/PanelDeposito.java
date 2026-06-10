@@ -72,9 +72,11 @@ public class PanelDeposito<T> {
 
         // Dibuja el stock que queda.
         int cantidad = deposito.size();
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", Font.PLAIN, 10));
-        g.drawString("Stock: " + cantidad, x + 5, y + alto + 14);
+        if (!etiqueta.equals("Vuelto")) {
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Arial", Font.PLAIN, 10));
+            g.drawString("Stock: " + cantidad, x + 5, y + alto + 14);
+        }
 
         if (cantidad == 0) {
             g.setColor(Color.PINK);
