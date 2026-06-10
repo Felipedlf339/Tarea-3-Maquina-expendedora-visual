@@ -156,14 +156,30 @@ public class PanelExpendedor extends JPanel {
 
         // 3. ZONA DEL VIDRIO
         else if (x >= 0 && x <= 600 && y >= 0 && y < 490) {
-            try {
-                exp.rellenarDepositosVacios(5);
-                this.actualizarPosiciones();
 
-                PanelComprador.mensajeEstado = "Máquina rellenada con éxito.";
-            } catch (Exception e) {
-                System.out.println("Error al rellenar: " + e.getMessage());
-                PanelComprador.mensajeEstado = e.getMessage();
+            // REVISAMOS SI ESTÁ VACÍO
+            boolean necesitaRelleno = exp.getDepCoca().size() == 0 ||
+                    exp.getDepSprite().size() == 0 ||
+                    exp.getDepFanta().size() == 0 ||
+                    exp.getDepSnickers().size() == 0 ||
+                    exp.getDepSuper8().size() == 0;
+
+            // NECESITA RELLENO
+            if (necesitaRelleno) {
+                try {
+                    exp.rellenarDepositosVacios(5);
+                    this.actualizarPosiciones();
+
+                    PanelComprador.mensajeEstado = "Máquina rellenada con éxito.";
+                } catch (Exception e) {
+                    System.out.println("Error al rellenar: " + e.getMessage());
+                    PanelComprador.mensajeEstado = e.getMessage();
+                }
+            }
+
+            // NO NECESITA RELLENO
+            else {
+                PanelComprador.mensajeEstado = "Stock suficiente. No es necesario rellenar.";
             }
         }
     }
