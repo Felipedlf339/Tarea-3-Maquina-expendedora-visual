@@ -1,8 +1,7 @@
 package org.example.vista;
 import org.example.modelo.*;
 import javax.swing.JPanel;
-import java.awt.Graphics;
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Clase que representa la interfaz gráfica del comprador.
@@ -41,24 +40,34 @@ public class PanelComprador extends JPanel {
         g.setColor(Color.BLACK);
         g.drawString("1. SELECCIONE LA MONEDA A USAR:", botonX, 50);
 
-        g.setColor(new Color(205, 127, 50));
-        g.fillOval(botonX, 70, 60, 60);
+        // SECCIÓN DE MONEDAS
         g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 12));
+        g.drawString("1. SELECCIONE LA MONEDA A USAR:", botonX, 50);
+
+        Color colorBronce = new Color(184, 115, 51);
+        g.setColor(colorBronce);
+        g.fillOval(botonX, 70, 60, 60);
+
+        g.setColor(colorBronce.darker().darker());
         g.drawOval(botonX, 70, 60, 60);
         g.drawString("$100", botonX + 15, 105);
 
-        g.setColor(new Color(212, 175, 55));
+        Color colorPlata = new Color(192, 192, 192);
+        g.setColor(colorPlata);
         g.fillOval(botonX + 80, 70, 60, 60);
-        g.setColor(Color.BLACK);
+
+        g.setColor(colorPlata.darker().darker());
         g.drawOval(botonX + 80, 70, 60, 60);
         g.drawString("$500", botonX + 95, 105);
 
-        g.setColor(new Color(143, 188, 143));
+        Color colorOro = new Color(218, 165, 32);
+        g.setColor(colorOro);
         g.fillOval(botonX + 160, 70, 60, 60);
-        g.setColor(Color.BLACK);
+
+        g.setColor(colorOro.darker().darker());
         g.drawOval(botonX + 160, 70, 60, 60);
         g.drawString("$1000", botonX + 165, 105);
-
 
         g.setColor(Color.BLUE);
         if (monedaSeleccionada != null) {
