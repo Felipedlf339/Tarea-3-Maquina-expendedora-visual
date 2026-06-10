@@ -5,6 +5,10 @@ import org.example.modelo.Moneda;
 import org.example.modelo.Producto;
 import java.awt.*;
 
+/**
+ * Clase que representa la interfaz grafica de un deposito en la maquina.
+ * @param <T> El tipo de elemento contenedor, es decir, Producto o Moneda.
+ */
 public class PanelDeposito<T> {
     private Deposito<T> deposito;
     private int x;
@@ -13,6 +17,15 @@ public class PanelDeposito<T> {
     private int alto;
     private String etiqueta;
 
+    /**
+     * Constructor de la clase PanelDeposito.
+     * @param deposito el deposito instanciado.
+     * @param x posición inicial horizontalmente.
+     * @param y posición inicial verticalmente.
+     * @param ancho el ancho en pixeles del deposito.
+     * @param alto el alto en pixeles del deposito.
+     * @param etiqueta nombre del producto.
+     */
     public PanelDeposito(Deposito<T> deposito, int x, int y, int ancho, int alto, String etiqueta) {
         this.deposito = deposito;
         this.x = x;
@@ -23,6 +36,9 @@ public class PanelDeposito<T> {
         deposito.setXY(x, y);
     }
 
+    /**
+     * Calcula y asigna el lugar de cada elemento dentro del deposito.
+     */
     public void setXY() {
         int cantidad = deposito.size();
         if (cantidad == 0) return;
@@ -43,11 +59,18 @@ public class PanelDeposito<T> {
         }
     }
 
+    /**
+     * Dibuja la etiqueta del producto, el stock que hay y los productos o monedas.
+     * @param g "pincel" que permite dibujar figuras, textos e imagenes en pantalla.
+     */
     public void paintComponent(Graphics g) {
+
+        // Dibuja la etiqueta del producto.
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 11));
         g.drawString(etiqueta, x + 8, y - 6);
 
+        // Dibuja el stock que queda.
         int cantidad = deposito.size();
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.PLAIN, 10));
@@ -60,6 +83,7 @@ public class PanelDeposito<T> {
             return;
         }
 
+        // Dibuja los productos o monedas.
         for (int i = 0; i < cantidad; i++) {
             T elem = deposito.getAt(i);
             if (elem instanceof Producto p) {

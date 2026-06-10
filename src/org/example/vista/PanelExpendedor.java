@@ -9,6 +9,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
+/**
+ * Clase encargada de la vista del expendedor.
+ */
 public class PanelExpendedor extends JPanel {
 
     private Expendedor exp;
@@ -21,6 +24,11 @@ public class PanelExpendedor extends JPanel {
 
     private PanelDeposito<Moneda> panelVuelto;
 
+    /**
+     * Constructor del panel expendedor.
+     * Define medidas y conecta cada repisa con su deposito correspondiente.
+     * @param exp instancia del expendedor.
+     */
     public PanelExpendedor(Expendedor exp) {
         this.exp = exp;
 
@@ -42,6 +50,9 @@ public class PanelExpendedor extends JPanel {
         actualizarPosiciones();
     }
 
+    /**
+     * Actualiza la posición de productos y monedas en la maquina.
+     */
     public void actualizarPosiciones() {
         panelCoca.setXY();
         panelSprite.setXY();
@@ -51,28 +62,36 @@ public class PanelExpendedor extends JPanel {
         panelVuelto.setXY();
     }
 
+    /**
+     * Dibuja como se verá la maquina expendedora, repisas, productos, cristal, entre otros.
+     * @param g "pincel" que permite dibujar figuras, textos e imagenes en pantalla.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        // Dibuja el exterior.
         g.setColor(Color.DARK_GRAY);
         g.fillRoundRect(40, 20, 510, 610, 20, 20);
 
         g.setColor(Color.DARK_GRAY.darker());
         g.drawRoundRect(40, 20, 510, 610, 20, 20);
 
+        // Dibuja el vidrio.
         g.setColor(new Color(173, 216, 230, 100));
         g.fillRoundRect(60, 60, 465, 380, 15, 15);
 
         g.setColor(Color.CYAN);
         g.drawRoundRect(60, 60, 465, 380, 15, 15);
 
+        // Vidrio de la caja de vuelto.
         g.setColor(new Color(173, 216, 230, 100));
         g.fillRoundRect(430, 490, 100, 110, 10, 10);
 
         g.setColor(Color.CYAN);
         g.drawRoundRect(430, 490, 100, 110, 10, 10);
 
+        // Dibuja productos y monedas.
         panelCoca.paintComponent(g);
         panelSprite.paintComponent(g);
         panelFanta.paintComponent(g);
@@ -81,17 +100,19 @@ public class PanelExpendedor extends JPanel {
 
         panelVuelto.paintComponent(g);
 
+        // Donde se retira el producto.
         g.setColor(Color.DARK_GRAY.darker().darker());
         g.fillRoundRect(70, 490, 325, 110, 10, 10);
 
         g.setColor(Color.LIGHT_GRAY);
         g.drawRoundRect(70, 490, 325, 110, 10, 10);
 
+        // Texto de la caja donde se retira el producto.
         g.setColor(Color.DARK_GRAY);
         g.setFont(new Font("Arial", Font.BOLD, 12));
         g.drawString("RETIRAR PRODUCTO", 140, 550);
 
-
+        // Detecta y dibuja el producto comprado.
         if (exp.getProductoComprado() != null) {
             Producto comprado = exp.getProductoComprado();
             comprado.setXY(205, 510);
@@ -99,6 +120,10 @@ public class PanelExpendedor extends JPanel {
         }
     }
 
+    /**
+     * Getter del panel del vuelto.
+     * @return el PanelDeposito del vuelto.
+     */
     public PanelDeposito<Moneda> getPanelVuelto() {
         return panelVuelto;
     }
@@ -131,7 +156,6 @@ public class PanelExpendedor extends JPanel {
 
         // 3. ZONA DEL VIDRIO
         else if (x >= 0 && x <= 600 && y >= 0 && y < 490) {
-            System.out.println("Clic detectado en el vidrio del Expendedor. Rellenando...");
             try {
                 exp.rellenarDepositosVacios(5);
                 this.actualizarPosiciones();
