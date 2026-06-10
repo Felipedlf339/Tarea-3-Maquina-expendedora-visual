@@ -36,7 +36,7 @@ public class PanelComprador extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
-
+        // FONDO DEL COLOR DE LA MAQUINA (ES PARTE DE)
         g.setColor(Color.DARK_GRAY);
         g.fillRoundRect(620, 20, 360, 610, 20, 20);
 
