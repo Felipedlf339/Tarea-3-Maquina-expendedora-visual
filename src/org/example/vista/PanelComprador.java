@@ -40,11 +40,6 @@ public class PanelComprador extends JPanel {
         g.setColor(Color.BLACK);
         g.drawString("1. SELECCIONE LA MONEDA A USAR:", botonX, 50);
 
-        // SECCIÓN DE MONEDAS
-        g.setColor(Color.BLACK);
-        g.setFont(new Font("Arial", Font.BOLD, 12));
-        g.drawString("1. SELECCIONE LA MONEDA A USAR:", botonX, 50);
-
         Color colorBronce = new Color(184, 115, 51);
         g.setColor(colorBronce);
         g.fillOval(botonX, 70, 60, 60);
