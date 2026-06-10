@@ -36,8 +36,12 @@ public class PanelComprador extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
+
+        g.setColor(Color.DARK_GRAY);
+        g.fillRoundRect(620, 20, 360, 610, 20, 20);
+
         // SECCIÓN DE MONEDAS
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         g.drawString("1. SELECCIONE LA MONEDA A USAR:", botonX, 50);
 
         Color colorBronce = new Color(184, 115, 51);
@@ -64,7 +68,7 @@ public class PanelComprador extends JPanel {
         g.drawOval(botonX + 160, 70, 60, 60);
         g.drawString("$1000", botonX + 165, 105);
 
-        g.setColor(Color.BLUE);
+        g.setColor(Color.GREEN);
         if (monedaSeleccionada != null) {
             g.drawString("Moneda seleccionada: $" + monedaSeleccionada.getValor(), botonX, 150);
         } else {
@@ -72,26 +76,26 @@ public class PanelComprador extends JPanel {
         }
 
         // SECCIÓN DE PRODUCTOS
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         g.drawString("2. SELECCIONE PRODUCTO PARA COMPRAR:", botonX, 180);
 
         g.setColor(Color.RED); g.fillRect(botonX, 190, botonAncho, botonAlto);
-        g.setColor(Color.WHITE); g.drawString("Coca-Cola $1000", botonX + 20, 215);
+        g.setColor(Color.WHITE); g.drawString("Coca-Cola $1000", botonX + 18, 215);
 
         g.setColor(Color.GREEN); g.fillRect(botonX, 240, botonAncho, botonAlto);
-        g.setColor(Color.BLACK); g.drawString("Sprite $1000", botonX + 30, 265);
+        g.setColor(Color.BLACK); g.drawString("Sprite $1000", botonX + 20, 265);
 
         g.setColor(Color.ORANGE); g.fillRect(botonX, 290, botonAncho, botonAlto);
-        g.setColor(Color.BLACK); g.drawString("Fanta $1000", botonX + 30, 315);
+        g.setColor(Color.BLACK); g.drawString("Fanta $1000", botonX + 20, 315);
 
         g.setColor(new Color(139, 69, 19)); g.fillRect(botonX, 340, botonAncho, botonAlto);
-        g.setColor(Color.WHITE); g.drawString("Snickers $800", botonX + 25, 365);
+        g.setColor(Color.WHITE); g.drawString("Snickers $800", botonX + 20, 365);
 
         g.setColor(Color.YELLOW.brighter()); g.fillRect(botonX, 390, botonAncho, botonAlto);
-        g.setColor(Color.BLACK); g.drawString("Super 8 $500", botonX + 25, 415);
+        g.setColor(Color.BLACK); g.drawString("Super 8 $500", botonX + 20, 415);
 
         // SECCIÓN DE MENSAJES
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         g.drawString("3. ESTADO DE LA COMPRA:", botonX, 470);
 
         g.setColor(Color.DARK_GRAY);
