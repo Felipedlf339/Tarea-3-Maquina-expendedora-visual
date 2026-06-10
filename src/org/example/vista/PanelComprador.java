@@ -76,19 +76,19 @@ public class PanelComprador extends JPanel {
         g.drawString("2. SELECCIONE PRODUCTO PARA COMPRAR:", botonX, 180);
 
         g.setColor(Color.RED); g.fillRect(botonX, 190, botonAncho, botonAlto);
-        g.setColor(Color.WHITE); g.drawString("Coca-Cola", botonX + 30, 215);
+        g.setColor(Color.WHITE); g.drawString("Coca-Cola $1000", botonX + 20, 215);
 
         g.setColor(Color.GREEN); g.fillRect(botonX, 240, botonAncho, botonAlto);
-        g.setColor(Color.BLACK); g.drawString("Sprite", botonX + 40, 265);
+        g.setColor(Color.BLACK); g.drawString("Sprite $1000", botonX + 30, 265);
 
         g.setColor(Color.ORANGE); g.fillRect(botonX, 290, botonAncho, botonAlto);
-        g.setColor(Color.BLACK); g.drawString("Fanta", botonX + 40, 315);
+        g.setColor(Color.BLACK); g.drawString("Fanta $1000", botonX + 30, 315);
 
         g.setColor(new Color(139, 69, 19)); g.fillRect(botonX, 340, botonAncho, botonAlto);
-        g.setColor(Color.WHITE); g.drawString("Snickers", botonX + 35, 365);
+        g.setColor(Color.WHITE); g.drawString("Snickers $800", botonX + 25, 365);
 
-        g.setColor(Color.YELLOW); g.fillRect(botonX, 390, botonAncho, botonAlto);
-        g.setColor(Color.BLACK); g.drawString("Super 8", botonX + 35, 415);
+        g.setColor(Color.YELLOW.brighter()); g.fillRect(botonX, 390, botonAncho, botonAlto);
+        g.setColor(Color.BLACK); g.drawString("Super 8 $500", botonX + 25, 415);
 
         // SECCIÓN DE MENSAJES
         g.setColor(Color.BLACK);
