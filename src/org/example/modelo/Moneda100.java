@@ -18,6 +18,7 @@ public class Moneda100 extends Moneda {
 
     /**
      * Retorna el valor de la moneda
+     *
      * @return 100
      */
     @Override
@@ -42,5 +43,7 @@ public class Moneda100 extends Moneda {
         g.setColor(colorCobre.darker());
         g.setFont(new Font("Arial", Font.BOLD, 11));
         g.drawString("$100", this.getX() + 6, this.getY() + 24);
+        g.setFont(new Font("Arial", Font.PLAIN, 8));
+        g.drawString("s:" + this.getSerie(), this.getX() + 7, this.getY() + 32);
     }
 }

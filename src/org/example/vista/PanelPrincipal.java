@@ -24,8 +24,8 @@ public class PanelPrincipal extends JPanel implements MouseListener {
      */
     public PanelPrincipal() {
         this.setLayout(null);
-        this.setBackground(Color.WHITE);
-        this.setPreferredSize(new Dimension(1200, 800));
+        this.setBackground(Color.lightGray.brighter());
+        this.setPreferredSize(new Dimension(1000, 700));
 
         Expendedor modeloExpendedor = new Expendedor(5);
         this.exp = new PanelExpendedor(modeloExpendedor);

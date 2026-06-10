@@ -45,5 +45,7 @@ public class Moneda1000 extends Moneda {
         g.setColor(oroOscuro);
         g.setFont(new Font("Arial", Font.BOLD, 10));
         g.drawString("$1000", this.getX() + 3, this.getY() + 24);
+        g.setFont(new Font("Arial", Font.PLAIN, 8));
+        g.drawString("s:" + this.getSerie(), this.getX() + 7, this.getY() + 32);
     }
 }
