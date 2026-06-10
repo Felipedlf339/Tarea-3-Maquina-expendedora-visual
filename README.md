@@ -15,6 +15,7 @@ a través de una interfaz gráfica interactiva con eventos de mouse.
 - `src/org/example/vista` — interfaz gráfica Swing
 
 ## Diagrama UML
+![UML](uml/UML3.png)
 
 
 ## Captura de pantalla
