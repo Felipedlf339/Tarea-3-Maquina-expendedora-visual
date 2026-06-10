@@ -170,6 +170,7 @@ public class PanelExpendedor extends JPanel {
                     exp.rellenarDepositosVacios(5);
                     this.actualizarPosiciones();
 
+                    System.out.println("Máquina rellenada con éxito.");
                     PanelComprador.mensajeEstado = "Máquina rellenada con éxito.";
                 } catch (Exception e) {
                     System.out.println("Error al rellenar: " + e.getMessage());
@@ -179,6 +180,7 @@ public class PanelExpendedor extends JPanel {
 
             // NO NECESITA RELLENO
             else {
+                System.out.println("Stock suficiente. No es necesario rellenar.");
                 PanelComprador.mensajeEstado = "Stock suficiente. No es necesario rellenar.";
             }
         }
