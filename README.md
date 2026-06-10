@@ -19,3 +19,4 @@ a través de una interfaz gráfica interactiva con eventos de mouse.
 
 
 ## Captura de pantalla
+![Interfaz](captura/visualización_interfaz.png)****
